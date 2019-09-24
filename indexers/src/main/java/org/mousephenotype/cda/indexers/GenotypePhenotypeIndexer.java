@@ -313,7 +313,7 @@ public class GenotypePhenotypeIndexer extends AbstractIndexer {
                     OntologyTermDTO mpDto = mpParser.getOntologyTerm(mpId);
 
                     if (mpDto == null) {
-                        logger.warn("Skipping missing mp term '" + mpId + "'");
+                        logger.warn(" Skipping missing mp term '" + mpId + "'");
                         continue;
                     }
 
@@ -356,7 +356,7 @@ public class GenotypePhenotypeIndexer extends AbstractIndexer {
                     runStatus.addError(" Found unknown ontology term: " + r.getString("ontology_term_id"));
                 }
 
-                documentCount++;
+                expectedDocumentCount++;
                 genotypePhenotypeCore.addBean(doc, 30000);
 
                 count++;

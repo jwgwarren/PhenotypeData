@@ -136,13 +136,13 @@ public class MPIndexer extends AbstractIndexer implements CommandLineRunner {
             initialiseSupportingBeans(connection);
             ontologyParserFactory = new OntologyParserFactory(komp2DataSource, owlpath);
             mpParser = ontologyParserFactory.getMpParser();
-            logger.info("Loaded mp parser");
+            logger.debug("Loaded mp parser");
             mpHpParser = ontologyParserFactory.getMpHpParser();
-            logger.info("Loaded mp hp parser");
+            logger.debug("Loaded mp hp parser");
             mpMaParser = ontologyParserFactory.getMpMaParser();
-            logger.info("Loaded mp ma parser");
+            logger.debug("Loaded mp ma parser");
             maParser = ontologyParserFactory.getMaParser();
-            logger.info("Loaded ma parser");
+            logger.debug("Loaded ma parser");
 
 
             // maps MP to number of phenotyping calls
@@ -241,7 +241,7 @@ public class MPIndexer extends AbstractIndexer implements CommandLineRunner {
                 logger.debug(" Added {} records for termId {}", count, termId);
                 count ++;
 
-                documentCount++;
+                expectedDocumentCount++;
                 mpCore.addBean(mp, 60000);
 
                 mpParser.fillJsonTreePath("MP:0000001", "/data/phenotypes/", mpGeneVariantCount, ontologyParserFactory.TOP_LEVEL_MP_TERMS, false); // call this if you want node ids from the objects

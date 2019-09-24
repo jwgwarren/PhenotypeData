@@ -180,7 +180,7 @@ public class AlleleIndexer extends AbstractIndexer implements CommandLineRunner 
 
 
                 // Now index the alleles
-                documentCount += alleles.size();
+                expectedDocumentCount += alleles.size();
                 indexAlleles(alleles);
 
                 count += BATCH_SIZE;
@@ -193,7 +193,7 @@ public class AlleleIndexer extends AbstractIndexer implements CommandLineRunner 
             throw new IndexerException(e);
         }
 
-        logger.info(" Added {} total beans in {}", count, commonUtils.msToHms(System.currentTimeMillis() - start));
+        logger.info(" Added {} total beans in {}", expectedDocumentCount, commonUtils.msToHms(System.currentTimeMillis() - start));
         return runStatus;
     }
 
