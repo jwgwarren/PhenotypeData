@@ -173,6 +173,7 @@
     function buildLink(row) {
         var baseUrl = "${baseUrl}";
         var link = null;
+        console.log('new changes here 3');
         if(row.procedure_name.startsWith("Viability Primary Screen") && row.parameter_stable_id !== "IMPC_VIA_001_001") {
             link = null;
         }
@@ -185,7 +186,10 @@
             }
         } else if(row.procedure_name.startsWith("Gross Pathology and Tissue Collectio")) {
             link = baseUrl + '/grosspath/' + row.gene_accession_id + '/' + row.parameter_stable_id;
-        } else {
+        }else if(row.parameter_name.toUpperCase().indexOf("image".toUpperCase()) !== -1) {
+            link = baseUrl + '/imageComparator?acc=' + row.gene_accession_id + '&parameter_stable_id=' + row.parameter_stable_id;
+        }
+        else {
             link =  baseUrl + "/charts?accession=" + row.gene_accession_id;
             link += "&allele_accession_id=" + row.allele_accession_id;
             link += "&parameter_stable_id=" + row.parameter_stable_id;
